@@ -1,16 +1,16 @@
-import graphene
-from graphene_django import DjangoObjectType
+# import graphene
+# from graphene_django import DjangoObjectType
 
-from .models import Track
-
-
-class TrackType(DjangoObjectType):
-    class Meta:
-        model = Track
+# from .models import Track
 
 
-class Query(graphene.ObjectType):
-    tracks = graphene.List(TrackType)
+# class TrackType(DjangoObjectType):
+#     class Meta:
+#         model = Track
 
-    def resolve_tracks(self, info):
-        return Track.objects.all()
+
+# class Query(graphene.ObjectType):
+#     tracks = graphene.List(TrackType)
+
+#     def resolve_tracks(self, info):
+#         return Track.objects.all()
