@@ -28,10 +28,38 @@ class CreateTrack(graphene.Mutation):
     # if you have a mutation with lots of arguments use **kwargs partens
     def mutate(self, info, title, description, url):
         # kwargs.get('tite)
-        track = Track(title=title, description=description, url=url)
-        track.save()
-        return CreateTrack(track=track)
+        track = Track(title=title, description=description,
+                      url=url)  # create a new track
+        track.save()  # adding to db
+        return CreateTrack(track=track)  # returning the track
 
 
-class mutation(graphene.ObjectType):
-    create_track = CreateTrack.Field()
+class mutation(graphene.ObjectType):  # this is the mutation class
+    create_track = CreateTrack.Field()  # this is the mutation field
+
+
+# results in localhost:8000/graphql
+
+# Query
+# {
+#   tracks {
+# 	id
+# 	title
+# 	description
+# 	url
+# 	createdAt
+# 	}
+# }
+
+# Mutation
+# Mutation {
+# 	createTrack(title: “Track 3”, description:”Track 3”, url:”www.tracsk.com”){
+# 		track{
+# 			id
+# 			title
+# 			description
+# 			url
+# 			createdAt
+# 		}
+# 	}
+# }
