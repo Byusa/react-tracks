@@ -28,6 +28,8 @@ class CreateTrack(graphene.Mutation):
     # if you have a mutation with lots of arguments use **kwargs partens
     def mutate(self, info, title, description, url):
         # kwargs.get('tite)
+        user = info.context.user or None  # if user is not logged in it will be None
+
         track = Track(title=title, description=description,
                       url=url)  # create a new track
         track.save()  # adding to db
